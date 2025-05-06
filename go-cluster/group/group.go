@@ -2,7 +2,6 @@ package group
 
 import (
 	"github.com/google/uuid"
-	"github.com/leulshawell/go-cluster/node"
 	"net"
 )
 
@@ -14,17 +13,12 @@ type Config struct {
 
 type Group struct {
 	name   string
-	nodes  []*node.Node
 	config *Config
 }
 
-func (g *Group) Accept(n *Node) error {
-	return nil
-}
-
 // Join the cluster
-func (s *Node) Join(g *Group) error {
-	return g.Accept(s)
+func (g *Group) Accept() error {
+	return nil
 }
 
 func Start() {
