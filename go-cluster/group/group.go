@@ -2,21 +2,18 @@ package group
 
 import (
 	// "github.com/geohot/minikeyvalue"
-	"github.com/google/uuid"
+	"fmt"
 	"net"
-)
+	"strconv"
+	"strings"
 
-const (
-	FIRST_UP = iota
-	HIGH
-	Completed
-	Failed
+	"github.com/google/uuid"
 )
 
 type Config struct {
-	Interface          net.Interface
+	Interface          *net.Interface
 	Port               int
-	Key                uuid.UUID
+	Key                string
 	MasterSelectionRle int
 }
 
@@ -24,6 +21,29 @@ type Group struct {
 	volume string
 	Name   string
 	Config *Config
+}
+
+func getKey(key string) string {
+	return "localhost:9000"
+}
+
+func GetGroupConfig(key string) (*Config, error) {
+	//get the config string from minikeyvalue. omes in interfacename:port format
+	configStr := getKey(key)
+
+	inter_port := strings.Split(configStr, ":")
+	interface_, err_ := net.InterfaceByName(inter_port[0])
+	port, err := strconv.Atoi(inter_port[1])
+	if err != nil || err_ != nil {
+		panic(fmt.Sprintf("Invalid condfig string %s", configStr))
+	}
+
+	return &Config{
+		Key:       key,
+		Port:      port,
+		Interface: interface_,
+	}, nil
+
 }
 
 func (g *Group) Up() {
@@ -38,6 +58,26 @@ func (g *Group) Up() {
 // Join the cluster
 func (g *Group) Accept() error {
 	return nil
+}
+
+func NewGroup(name string, interfaceName string, port int) (*Group, error) {
+	inter, err := net.InterfaceByName(interfaceName)
+
+	if err != nil {
+		return nil, err
+	}
+
+	key := uuid.New().String()
+	return &Group{
+		Config: &Config{
+			Interface: inter,
+			Port:      port,
+			Key:       key,
+		},
+		Name:   name,
+		volume: key + "/" + name,
+	}, nil
+
 }
 
 func Start() {
