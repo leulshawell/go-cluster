@@ -1,7 +1,7 @@
 package Node
 
 import (
-	"github.com/leulshawell/go-cluster/group"
+	"github.com/leulshawell/go-cluster/go-cluster/group"
 )
 
 type Node struct {
