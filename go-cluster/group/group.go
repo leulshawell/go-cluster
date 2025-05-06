@@ -1,6 +1,7 @@
 package group
 
 import (
+	// "github.com/geohot/minikeyvalue"
 	"github.com/google/uuid"
 	"net"
 )
@@ -12,11 +13,6 @@ const (
 	Failed
 )
 
-type Job struct {
-	path string
-	env  string
-}
-
 type Config struct {
 	Interface          net.Interface
 	Port               int
@@ -25,13 +21,13 @@ type Config struct {
 }
 
 type Group struct {
-	name    string
-	config  *Config
-	jobPool []Job
+	volume string
+	Name   string
+	Config *Config
 }
 
 func (g *Group) Up() {
-	//discover
+	//start minikeyvalue instance for group data
 
 	//schedule
 
