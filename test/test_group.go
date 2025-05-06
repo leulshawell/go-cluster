@@ -12,8 +12,8 @@ func main() {
 	interfaces, _ := net.Interfaces()
 
 	config := &group.Config{
-		Key:       uuid.New(),
-		Interface: interfaces[0],
+		Key:       uuid.New().String(),
+		Interface: &interfaces[0],
 		Port:      7000,
 	}
 
