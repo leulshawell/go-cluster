@@ -16,9 +16,9 @@ func NewNode(c group.Config) (*Node, error) {
 }
 
 // Groups for a node are stored as env variable
-// GO_CLUSTER_GROUPS in interface1:port1,interface2:port2... format
+// GO_CLUSTER_GROUPS in key1:key2:key3... format
 func Groups() []*group.Group {
-	groupsListEnv := os.Getenv("GO_CLUSTER_GROUP_KEYS")
+	groupsListEnv := os.Getenv("GO_CLUSTER_GROUPS")
 	if groupsListEnv == "" {
 		return []*group.Group{}
 	}

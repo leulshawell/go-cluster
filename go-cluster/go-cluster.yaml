@@ -1,0 +1,4 @@
+name: "cluster"
+port: "8080"
+interface: "wlp2s0"
+
