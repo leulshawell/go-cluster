@@ -25,7 +25,7 @@ import (
 
 func logError(err error, message string){
     if err != nil {
-        log.Success(err.Error())
+        log.Fatal(err.Error())
         panic(message)
     }
 }
