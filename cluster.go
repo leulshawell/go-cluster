@@ -12,9 +12,9 @@ import (
 	quic "github.com/quic-go/quic-go"
 	"github.com/syndtr/goleveldb/leveldb"
 
-	"gihub.com/leulshawell/go-cluster/go-cluster/config"
-	"github.com/leulshawell/go-cluster/go-cluster/fs"
-	"github.com/leulshawell/go-cluster/go-cluster/group"
+	"github.com/leulshawell/go-cluster/config"
+	"github.com/leulshawell/go-cluster/fs"
+	"github.com/leulshawell/go-cluster/group"
 )
 
 type Cluster struct {

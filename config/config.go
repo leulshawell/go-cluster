@@ -1,4 +1,4 @@
-package main
+package config
 
 import (
 	"fmt"
@@ -15,7 +15,8 @@ type Cluster struct {
 
 type Config struct {
 	Name      string `yaml:"name"`
-	Port      string `yaml:"port"`
+	Port      int    `yaml:"port"`
+	RootPath  string
 	Interface string `yaml:"interface"`
 }
 

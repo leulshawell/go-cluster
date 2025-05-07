@@ -1,7 +1,7 @@
 package work
 
 import (
-	"github.com/leulshawell/go-cluster/go-cluster/group"
+	"github.com/leulshawell/go-cluster/group"
 )
 
 type Work struct {

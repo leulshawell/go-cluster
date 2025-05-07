@@ -8,11 +8,14 @@ import (
 	"net"
 	"os"
 
-	"gihub.com/leulshawell/go-cluster/go-cluster/config"
 	quic "github.com/quic-go/quic-go"
 )
 
 type Volume struct {
+}
+
+func handleNewConn(con quic.Connection) {
+	return
 }
 
 // start an independent volume server
@@ -22,7 +25,7 @@ func StartVolumeServer(rooPath string, port int, ctx *context.Context, clusterCh
 		// Directory does not exist, create it
 		err := os.MkdirAll(rooPath, 0755)
 		if err != nil {
-			log.Fatal(fmt.Sprintf("failed to create directory: %w", err))
+			log.Fatal("failed to create directory: %w", err)
 		}
 	}
 
@@ -43,8 +46,10 @@ func StartVolumeServer(rooPath string, port int, ctx *context.Context, clusterCh
 	ln, err := tr.Listen(tlsConf, quicConf)
 
 	for {
-		conn, err := ln.Accept()
-		// ... error handling
-		// handle the connection, usually in a new Go routine
+		conn, err := ln.Accept(*ctx)
+		if err != nil {
+			fmt.Printf(err.Error())
+		}
+		go handleNewConn(conn)
 	}
 }
