@@ -9,7 +9,7 @@ go-cluster node start --conif /etc/config/go-cluster.cfg
 ```
 
 <b>Write you go lang app</b></br>
-Use the api for accessing files, the scheduler and environment
+Use the api for accessing files, the scheduler and exec environment</br>
 Example: open a file read -> content modify content -> write back
 
 
