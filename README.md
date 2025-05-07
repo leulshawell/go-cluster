@@ -32,9 +32,9 @@ func logError(err error, message string){
 func main(){
 
     content := make([]byte, 1024)
-    newContent := []byte("Hello  file system", fs.O_RDWR) //other options for selecting volumes and stuff will be there
+    newContent := []byte("Hello  file system") //other options for selecting volumes and stuff will be there
 
-    file, err := fs.Open("path/to/file") //open file from the dist. file system
+    file, err := fs.Open("path/to/file", fs.O_RDWR) //open file from the dist. file system
     logError(err, "panic when opening")
 
     n, err := file.Read(content)
