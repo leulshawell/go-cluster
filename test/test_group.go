@@ -1,12 +1,15 @@
-package main
+package test
 
 import (
-	"github.com/leulshawell/go-cluster/cluster"
+	"context"
+
+	"github.com/leulshawell/go-cluster/fs"
 )
 
-func main() {
+func Test_server() {
 
-	c := cluster.NewCluster()
+	ctx := context.Background()
+	fs.StartVolumeServer("/", 8888, &ctx, make(chan struct{}))
 
 	return
 }
