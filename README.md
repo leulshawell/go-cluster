@@ -1,14 +1,14 @@
 the plan 
 
 
-<b>Start a server (Node)</b>
+<b>Start a server (Node)</b></br>
 this will discove other node in the cluter according to the config file
 
 ```sh 
 go-cluster node start --conif /etc/config/go-cluster.cfg 
 ```
 
-<b>Write you go lang app</b>
+<b>Write you go lang app</b></br>
 Use the api for accessing files, the scheduler and environment
 Example: open a file read -> content modify content -> write back
 
@@ -51,7 +51,7 @@ func main(){
 
  ```
 
- <b>Build and Run the app</b>
+ <b>Build and Run the app</b></br>
  options for the scheduler like setting priority, cpu util and max-memry size 
 
 ```sh
